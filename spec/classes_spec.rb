@@ -78,6 +78,35 @@ class TestLibrary < Minitest::Test
     @library_obj = Library.new
     # define a local variable @new_book to store a new book hash
     # this is for testing add_book method
+
+    # n actual code, class gets generated with an empty array,
+    # so for testing, we will update the class with list of books,
+    # for this to work attr_accessor will be used to access inst variable @books
+
+    @library_obj.books = [
+      {
+        title: "lord_of_the_rings",
+        rental_details: {
+        student_name: "Jeff",
+        date: "01/12/16"
+        }
+      },
+      {
+        title: "cats_cradle",
+        rental_details: {
+        student_name: "Judy",
+        date: "01/12/19"
+        }
+      },
+      {
+        title: "Necronomicon",
+        rental_details: {
+        student_name: "Erica",
+        date: "01/12/15"
+        }
+      }
+    ]
+
     @new_book = {
             title: "Killing Floor",
             rental_details: {

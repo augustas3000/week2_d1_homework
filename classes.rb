@@ -64,34 +64,13 @@ end
 
 class Library
 
-  attr_reader :books
+  # change to accessor for books so we can update this in def setup for testing.
+  attr_accessor :books
   # attr_writer :
 
 
   def initialize
-    @books = [
-      {
-        title: "lord_of_the_rings",
-        rental_details: {
-        student_name: "Jeff",
-        date: "01/12/16"
-        }
-      },
-      {
-        title: "cats_cradle",
-        rental_details: {
-        student_name: "Judy",
-        date: "01/12/19"
-        }
-      },
-      {
-        title: "Necronomicon",
-        rental_details: {
-        student_name: "Erica",
-        date: "01/12/15"
-        }
-      }
-    ]
+    @books = []
   end
 
   # Create a method that takes in a book title and returns all of the information about that book.
@@ -167,13 +146,19 @@ class Library
     # return hash of questioned book if present and save it
     # to a variable book_hash
     book_hash = return_book_hash_simple(book_title_str)
-    # delete the old one from @books array
-    @books.delete(book_hash)
+    # this above statement points variable book_hash to an
+    # actual book hash if fpund by name, we can then, change its
+    # values as required. THE VARIABLE  does not copy only points
+    # to a specific value in memory.?
+
+
+    # delete the old one from @books array(unecessary)
+    # @books.delete(book_hash)
     # update saved hash as required
     book_hash[:rental_details][:student_name] = student_str
     book_hash[:rental_details][:date] = due_date_str
-    # push the updated book hash to @books array
-    @books.push(book_hash)
+    # push the updated book hash to @books array, unecessary but works:
+    # @books.push(book_hash)
   end
 
 end
